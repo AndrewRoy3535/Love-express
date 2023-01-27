@@ -47,19 +47,16 @@ const CreateUser = () => {
   console.log("CreateUeser");
 
   return (
-    <Box
-      component='form'
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        border: "1px solid black",
-        padding: 1,
-      }}
-      onSubmit={handleSubmit}>
+    <Box component='form' className='container_user' onSubmit={handleSubmit}>
+      <FormLabel
+        id='demo-radio-buttons-group-label'
+        sx={{ marginTop: "10px !important" }}>
+        Create new user name
+      </FormLabel>
       <TextField
-        margin='normal'
         value={inputUserRef.name}
+        size='small'
+        margin='dense'
         required
         label='New user'
         name='name'
@@ -67,9 +64,15 @@ const CreateUser = () => {
         autoFocus
         onChange={handleChange}
       />
+      <FormLabel
+        id='demo-radio-buttons-group-label'
+        sx={{ marginTop: "10px !important" }}>
+        Create new user password
+      </FormLabel>
       <TextField
         value={inputUserRef.password}
-        margin='normal'
+        size='small'
+        margin='dense'
         type='password'
         required
         id='password'
@@ -80,7 +83,8 @@ const CreateUser = () => {
       />
       <TextField
         value={inputUserRef.confirmpassword}
-        margin='normal'
+        size='small'
+        margin='dense'
         type='password'
         required
         id='confirmpassword'
@@ -89,7 +93,11 @@ const CreateUser = () => {
         autoFocus
         onChange={handleChange}
       />
-      <FormLabel id='demo-radio-buttons-group-label'>Admin</FormLabel>
+      <FormLabel
+        id='demo-radio-buttons-group-label'
+        sx={{ marginTop: "10px !important" }}>
+        Select as admin
+      </FormLabel>
       <FormControlLabel
         control={
           <Radio
@@ -136,7 +144,7 @@ const CreateUser = () => {
             fontWeight: 300,
             fontSize: "14px",
           }}>
-          <p>A new user created Successfully!</p>
+          <p>Successfully created a new user !</p>
         </Box>
       )}
     </Box>

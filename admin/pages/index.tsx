@@ -1,3 +1,5 @@
+import { Box } from "@mui/material";
+
 export default function Home() {
-  return <div className='text-red-600'>Home</div>;
+  return <Box className='text-red-600'>Home</Box>;
 }

@@ -20,7 +20,7 @@ const Appbar: React.FC<AppBarProps> = () => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} className='relative'>
+      <Box sx={{ flexGrow: 1 }}>
         <AppBar position='static'>
           <Toolbar>
             <IconButton

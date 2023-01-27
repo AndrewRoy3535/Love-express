@@ -8,14 +8,14 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { Gamepad, Home } from "@material-ui/icons";
+import { Gamepad, Home, Update } from "@material-ui/icons";
 import Link from "next/link";
 import { AppBarProps } from "../types/interfaces";
 
 const Lists: React.FC<AppBarProps> = ({ toggleDrawer }) => {
   const routes = [
     { route: "/", name: "Home", icon: <Home /> },
-    { route: "/utility", name: "Utility", icon: <Gamepad /> },
+    { route: "/utility", name: "Utility", icon: <Update /> },
   ];
   return (
     <Box role='presentation'>
