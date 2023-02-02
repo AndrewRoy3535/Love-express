@@ -1,40 +1,40 @@
-import React, { useState, useMemo, useCallback, useContext } from "react";
-import { CreateBusType } from "../types/types";
-import { Box, SelectChangeEvent, Button } from "@mui/material";
+import React, { useMemo, useCallback, useContext } from "react";
+import { Box, SelectChangeEvent } from "@mui/material";
 import dayjs from "dayjs";
 import FirstHalfForm from "./FirstHalfForm";
 import SecondHalfForm from "./SecondHalfForm";
 import ScheduleContext from "../../context/ScheduleContext";
 import { SetBusScheduleType } from "../types/interfaces";
+import ModalScheduleList from "../modals/ModalScheduleList";
 
 const CreateBusSchedule = () => {
-  const { busSchedule, setBusSchedule } =
+  const { busSchedule, setBusSchedule, schedules, setSchedules, setIsSuccSdl } =
     useContext<SetBusScheduleType>(ScheduleContext);
-  const [schedules, setSchedules] = useState<CreateBusType[]>([]);
 
   const inputScheduleRef = useMemo(() => busSchedule, [busSchedule]);
-
+  console.log(schedules);
   const handleChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (
+      event:
+        | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        | SelectChangeEvent
+    ) => {
       if (busSchedule) {
-        setBusSchedule({
-          ...busSchedule,
-          [event.target.name]: event.target.value,
-        });
+        if (event.target.name) {
+          setBusSchedule({
+            ...busSchedule,
+            [event.target.name]: event.target.value,
+          });
+        } else {
+          const { value, name } = event.target;
+          setBusSchedule((prevState: any) => {
+            return {
+              ...prevState,
+              [name]: value,
+            };
+          });
+        }
       }
-    },
-    [busSchedule]
-  );
-
-  const handleSelectChange = useCallback(
-    (event: SelectChangeEvent) => {
-      const { value, name } = event.target;
-      setBusSchedule((prevState: any) => {
-        return {
-          ...prevState,
-          [name]: value,
-        };
-      });
     },
     [busSchedule]
   );
@@ -65,9 +65,12 @@ const CreateBusSchedule = () => {
       booked: 0,
       avaiable: 40,
     });
-  };
 
-  console.log("Schedules", schedules);
+    setIsSuccSdl(true);
+    setTimeout(() => {
+      setIsSuccSdl(false);
+    }, 5000);
+  };
 
   const handleDateChange = useCallback((date: Date | null) => {
     if (date) {
@@ -78,22 +81,23 @@ const CreateBusSchedule = () => {
   }, []);
 
   return (
-    <Box
-      component='form'
-      className='container_schedule'
-      onSubmit={handleSubmit}>
-      <FirstHalfForm
-        handleChange={handleChange}
-        handleSelectChange={handleSelectChange}
-        handleDateChange={handleDateChange}
-        inputScheduleRef={inputScheduleRef}
-      />
-      <SecondHalfForm
-        handleChange={handleChange}
-        handleSelectChange={handleSelectChange}
-        inputScheduleRef={inputScheduleRef}
-      />
-    </Box>
+    <>
+      <Box
+        component='form'
+        className='container_schedule'
+        onSubmit={handleSubmit}>
+        <FirstHalfForm
+          handleChange={handleChange}
+          handleDateChange={handleDateChange}
+          inputScheduleRef={inputScheduleRef}
+        />
+        <SecondHalfForm
+          handleChange={handleChange}
+          inputScheduleRef={inputScheduleRef}
+        />
+      </Box>
+      <ModalScheduleList />
+    </>
   );
 };
 export default CreateBusSchedule;

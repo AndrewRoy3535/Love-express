@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { useContext, useState } from "react";
 import {
   Box,
   FormLabel,
@@ -11,10 +11,23 @@ import {
   MenuItem,
 } from "@mui/material";
 import { CreateBusProps } from "../types/interfaces";
+import ScheduleContext from "../../context/ScheduleContext";
 
 function SecondHalfForm(props: CreateBusProps) {
-  const { inputScheduleRef, handleChange, handleSelectChange } = props;
-  console.log("second half");
+  const { inputScheduleRef, handleChange } = props;
+
+  const { handleOpenSchedules, schedules, isSuccSdl } =
+    useContext(ScheduleContext);
+
+  const [isFareValid, setIsFareValid] = useState(true);
+
+  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    if (event.target.name === "fare") {
+      const isString = /^[a-zA-Z]+$/.test(event.target.value);
+      setIsFareValid(!isString);
+    }
+  };
+
   return (
     <Box component='div' className='container_schedule_form'>
       <FormLabel
@@ -50,7 +63,7 @@ function SecondHalfForm(props: CreateBusProps) {
           label='Coach Class'
           name='coachClass'
           value={inputScheduleRef.coachClass}
-          onChange={handleSelectChange}>
+          onChange={handleChange}>
           <MenuItem value='E-Class'>E-Class</MenuItem>
           <MenuItem value='S-Class'>S-Class</MenuItem>
         </Select>
@@ -61,39 +74,15 @@ function SecondHalfForm(props: CreateBusProps) {
         Fare
       </FormLabel>
       <TextField
+        error={!isFareValid}
+        helperText={isFareValid ? "" : "Fare should be a number"}
+        required
+        onBlur={handleBlur}
         value={inputScheduleRef.fare}
         size='small'
         fullWidth
         name='fare'
         autoComplete='fare'
-        autoFocus
-        onChange={handleChange}
-      />
-      <FormLabel
-        id='demo-radio-buttons-group-label'
-        sx={{ marginTop: "10px !important" }}>
-        Sold
-      </FormLabel>
-      <TextField
-        value={inputScheduleRef.sold}
-        size='small'
-        fullWidth
-        name='sold'
-        autoComplete='sold'
-        autoFocus
-        onChange={handleChange}
-      />
-      <FormLabel
-        id='demo-radio-buttons-group-label'
-        sx={{ marginTop: "10px !important" }}>
-        Booked
-      </FormLabel>
-      <TextField
-        value={inputScheduleRef.booked}
-        size='small'
-        fullWidth
-        name='booked'
-        autoComplete='booked'
         autoFocus
         onChange={handleChange}
       />
@@ -103,16 +92,37 @@ function SecondHalfForm(props: CreateBusProps) {
           fontSize: "14px",
           fontWeight: "bold",
           color: "#66749c",
-        }}>
-        Avaiable Seats: {inputScheduleRef.avaiable - inputScheduleRef.sold}
-      </Typography>
-      <Button
-        type='submit'
-        variant='outlined'
-        color='primary'
-        sx={{ marginTop: 1 }}>
-        Create
-      </Button>
+        }}></Typography>
+      <Box component='div' sx={{ gap: 1, display: "flex" }}>
+        <Button
+          type='submit'
+          variant='outlined'
+          color='primary'
+          sx={{ marginTop: 1 }}>
+          Create
+        </Button>
+        {schedules.length > 0 && (
+          <Button
+            onClick={handleOpenSchedules}
+            type='button'
+            variant='outlined'
+            color='primary'
+            sx={{ marginTop: 1 }}>
+            Schedules
+          </Button>
+        )}
+      </Box>
+      {isSuccSdl && (
+        <Box
+          sx={{
+            marginTop: "5px",
+            color: "green",
+            fontWeight: 300,
+            fontSize: "14px",
+          }}>
+          <p>Successfully created schedule!</p>
+        </Box>
+      )}
     </Box>
   );
 }

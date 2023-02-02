@@ -1,9 +1,13 @@
 .header_container {
-    @apply bg-sky-600 h-11 
+    @apply bg-sky-600 h-11 flex items-center pt-2 pb-2
 }
 
 .header_form_text {
-    @apply text-white font-thin text-xl capitalize ml-1 p-1
+    @apply text-white font-thin text-xl uppercase ml-1 p-1 
+}
+.herader_content_count{
+    @apply text-lg ml-3 text-gray-900  rounded-full w-8 h-8  flex 
+    items-center justify-center shadow-md bg-amber-300
 }
 .header_form_description {
     @apply text-sm text-gray-400

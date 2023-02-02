@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
 
-export type CreateUser = {
+export type CreateUserTypes = {
   name: string;
-  password: string;
-  confirmpassword: string;
-  admin: boolean;
+  password?: string;
+  confirmpassword?: string;
+  admin?: boolean;
 };
 
 export type CreateBusType = {
@@ -17,8 +17,8 @@ export type CreateBusType = {
   endCounter: string;
   registrationNumber: string;
   coachClass: string;
-  fare: number;
+  fare: number | null;
   sold: number;
   booked: number;
-  avaiable: number;
+  available: number | 40;
 };

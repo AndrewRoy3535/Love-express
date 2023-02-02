@@ -12,12 +12,7 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { CreateBusProps } from "../types/interfaces";
 
 function FirstHalfForm(props: CreateBusProps) {
-  const {
-    handleChange,
-    inputScheduleRef,
-    handleSelectChange,
-    handleDateChange,
-  } = props;
+  const { handleChange, inputScheduleRef, handleDateChange } = props;
 
   console.log("firstHalfForm");
 
@@ -55,7 +50,7 @@ function FirstHalfForm(props: CreateBusProps) {
           label='Coach Type'
           name='coachType'
           value={inputScheduleRef.coachType}
-          onChange={handleSelectChange}>
+          onChange={handleChange}>
           <MenuItem value='Ac'>Ac</MenuItem>
           <MenuItem value='None-Ac'>None-Ac</MenuItem>
         </Select>

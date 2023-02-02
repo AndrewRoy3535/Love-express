@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo, useContext } from "react";
 import {
   Button,
   FormControlLabel,
@@ -7,15 +7,13 @@ import {
   TextField,
   FormLabel,
 } from "@mui/material";
-import { CreateUser } from "../types/types";
+import UserContext from "../../context/UserContext";
+import ModalUserList from "../modals/ModalUserList";
 
 const CreateUser = () => {
-  const [user, setUser] = useState<CreateUser>({
-    name: "",
-    password: "",
-    confirmpassword: "",
-    admin: false,
-  });
+  const { user, setUser, users, setUsers, handleOpenUsers } =
+    useContext(UserContext);
+
   const [isMatch, setIsMatch] = useState<boolean>(true);
   const [isSuccessful, setIsSuccessful] = useState<boolean>(false);
 
@@ -28,11 +26,12 @@ const CreateUser = () => {
       setIsSuccessful(false);
     } else {
       setIsMatch(true);
-      console.log(user);
+      setUsers([...users, user]);
       setIsSuccessful(true);
       setUser({ name: "", password: "", confirmpassword: "", admin: false });
     }
   };
+  console.log(users, "users");
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,6 +77,7 @@ const CreateUser = () => {
         id='password'
         label='Password'
         name='password'
+        error={!isMatch}
         autoFocus
         onChange={handleChange}
       />
@@ -90,6 +90,7 @@ const CreateUser = () => {
         id='confirmpassword'
         label='Confirm Password'
         name='confirmpassword'
+        error={!isMatch}
         autoFocus
         onChange={handleChange}
       />
@@ -120,9 +121,20 @@ const CreateUser = () => {
         }
         label='No'
       />
-      <Button type='submit' variant='outlined' color='primary'>
-        Create
-      </Button>
+      <Box component='div' sx={{ display: "flex", gap: 1 }}>
+        <Button type='submit' variant='outlined' color='primary'>
+          Create
+        </Button>
+        {users.length > 0 && (
+          <Button
+            type='button'
+            onClick={handleOpenUsers}
+            variant='outlined'
+            color='primary'>
+            Users
+          </Button>
+        )}
+      </Box>
       {isMatch ? (
         <></>
       ) : (
@@ -147,6 +159,7 @@ const CreateUser = () => {
           <p>Successfully created a new user !</p>
         </Box>
       )}
+      <ModalUserList />
     </Box>
   );
 };
