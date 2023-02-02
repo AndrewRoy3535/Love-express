@@ -7,7 +7,7 @@ A project with NodeJs, ExpressJs, NextJs 13, TailwindCss, Material UI.
 First, install required packages:
 
 1. Navigate to admin folder.
-2. run the folling commands:
+2. Run one of the follwing command:
 
 ```bash
 npm install
@@ -16,7 +16,7 @@ yarn install
 ```
 
 3. Navigate to backend folder.
-4. run the folling commands:
+4. Run one of the follwing command:
 
 ```bash
 npm install
@@ -26,7 +26,7 @@ yarn install
 
 Second, run the development server:
 
-1. Navigate to backend folder and run the folling commands:
+1. Navigate to backend folder and run one of the follwing command:
 
 ```bash
 npm run dev
@@ -34,7 +34,7 @@ npm run dev
 yarn run dev
 ```
 
-2. Navigate to admin folder and run the folling commands:
+2. Navigate to admin folder and run one of the follwing command:
 
 ```bash
 npm run dev
