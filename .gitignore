@@ -6,6 +6,7 @@
 /backend/node_modules
 /admin/.pnp
 /admin/.pnp.js
+/logs
 
 # testing
 /admin/coverage

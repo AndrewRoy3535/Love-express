@@ -64,6 +64,8 @@ const CreateBusSchedule = () => {
       sold: 0,
       booked: 0,
       avaiable: 40,
+      livingFrom: "",
+      goingTo: "",
     });
 
     setIsSuccSdl(true);

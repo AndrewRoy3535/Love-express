@@ -9,8 +9,8 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { CreateBusType } from "../types/types";
 
 const style = {
   position: "absolute" as "absolute",
@@ -26,7 +26,7 @@ const style = {
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 1024,
+    minWidth: 1224,
   },
   cell: {
     fontWeight: "bold",
@@ -40,7 +40,9 @@ const ModalScheduleList = () => {
   const classes = useStyles();
 
   const handleDelete = (index: number) => {
-    setSchedules(schedules.filter((row: any, i: number) => i !== index));
+    setSchedules(
+      schedules.filter((row: CreateBusType, i: number) => i !== index)
+    );
   };
 
   return (
@@ -81,12 +83,18 @@ const ModalScheduleList = () => {
                     Reg no.
                   </TableCell>
                   <TableCell className={classes.cell} align='right'>
+                    From
+                  </TableCell>
+                  <TableCell className={classes.cell} align='right'>
+                    To
+                  </TableCell>
+                  <TableCell className={classes.cell} align='right'>
                     Delete
                   </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {schedules.map((row: any, index: number) => (
+                {schedules.map((row: CreateBusType, index: number) => (
                   <TableRow key={index}>
                     <TableCell component='th' scope='row'>
                       {row.date}
@@ -100,10 +108,12 @@ const ModalScheduleList = () => {
                     <TableCell align='right'>
                       {row.registrationNumber}
                     </TableCell>
+                    <TableCell align='right'>{row.livingFrom}</TableCell>
+                    <TableCell align='right'>{row.goingTo}</TableCell>
                     <TableCell align='right'>
-                      <IconButton onClick={() => handleDelete(index)}>
+                      <Button onClick={() => handleDelete(index)}>
                         <DeleteIcon />
-                      </IconButton>
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}

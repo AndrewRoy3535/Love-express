@@ -71,7 +71,7 @@ function SecondHalfForm(props: CreateBusProps) {
       <FormLabel
         id='demo-radio-buttons-group-label'
         sx={{ marginTop: "10px !important" }}>
-        Fare
+        Fare/Price
       </FormLabel>
       <TextField
         error={!isFareValid}
@@ -84,8 +84,43 @@ function SecondHalfForm(props: CreateBusProps) {
         name='fare'
         autoComplete='fare'
         autoFocus
+        placeholder='ex: 1400'
         onChange={handleChange}
       />
+      <FormControl fullWidth sx={{ marginTop: "10px" }} required>
+        <InputLabel id='demo-simple-select-label' size='small'>
+          Living from
+        </InputLabel>
+        <Select
+          required
+          size='small'
+          labelId='demo-simple-select-label'
+          id='demo-simple-select'
+          name='livingFrom'
+          value={inputScheduleRef.livingFrom}
+          label='Living from'
+          onChange={handleChange}>
+          <MenuItem value='Dhaka'>Dhaka</MenuItem>
+          <MenuItem value='Chittagong'>Chittagong</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl fullWidth sx={{ marginTop: "10px" }} required>
+        <InputLabel id='demo-simple-select-label' size='small'>
+          Going To
+        </InputLabel>
+        <Select
+          required
+          size='small'
+          labelId='demo-simple-select-label'
+          id='demo-simple-select'
+          name='goingTo'
+          value={inputScheduleRef.goingTo}
+          label='Living from'
+          onChange={handleChange}>
+          <MenuItem value='Dhaka'>Dhaka</MenuItem>
+          <MenuItem value='Chittagong'>Chittagong</MenuItem>
+        </Select>
+      </FormControl>
       <Typography
         sx={{
           margin: 1,

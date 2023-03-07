@@ -21,4 +21,6 @@ export type CreateBusType = {
   sold: number;
   booked: number;
   available: number | 40;
+  livingFrom: string;
+  goingTo: string;
 };

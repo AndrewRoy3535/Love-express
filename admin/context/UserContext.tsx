@@ -3,10 +3,17 @@ import { CreateUserTypes } from "../component/types/types";
 import { CreateBusContextTypes } from "../component/types/interfaces";
 
 const UserContext = createContext<CreateBusContextTypes>({
-  user: {},
+  user: { name: "", password: "", confirmpassword: "", admin: false },
   setUser: () => {},
-  users: [],
-  setUsers: () => [],
+  users: [
+    {
+      name: "",
+      password: "",
+      confirmpassword: "",
+      admin: false,
+    },
+  ],
+  setUsers: () => [{}],
   showUser: false,
   setShowUsers: () => {},
   handleOpenUsers: () => {},

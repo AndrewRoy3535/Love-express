@@ -1,6 +1,6 @@
 import React from "react";
 import { SelectChangeEvent } from "@mui/material";
-import { CreateBusType } from "./types";
+import { CreateBusType, CreateUserTypes } from "./types";
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -21,10 +21,10 @@ export interface CreateBusProps {
 }
 
 export interface SetBusScheduleType {
-  busSchedule: any;
-  setBusSchedule: (busSchedule: any) => void;
-  schedules: any;
-  setSchedules: (schedules: any) => void;
+  busSchedule: CreateBusType;
+  setBusSchedule: (busSchedule: CreateBusType) => void;
+  schedules: CreateBusType[];
+  setSchedules: (schedules: CreateBusType[]) => void;
   showSchedules: boolean;
   setShowSchedules: (modal: boolean) => void;
   handleOpenSchedules: () => void;
@@ -34,10 +34,10 @@ export interface SetBusScheduleType {
 }
 
 export interface CreateBusContextTypes {
-  user: any;
-  setUser: (user: any) => void;
-  users: any;
-  setUsers: (users: any) => void;
+  user: CreateUserTypes;
+  setUser: (user: CreateUserTypes) => void;
+  users: CreateUserTypes[];
+  setUsers: (users: CreateUserTypes[]) => void;
   showUser: any;
   setShowUsers: (showUser: any) => void;
   handleCloseUsers: () => void;

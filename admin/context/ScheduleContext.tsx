@@ -4,9 +4,43 @@ import { CreateBusType } from "../component/types/types";
 import { SetBusScheduleType } from "../component/types/interfaces";
 
 const ScheduleContext = createContext<SetBusScheduleType>({
-  busSchedule: {},
+  busSchedule: {
+    dateAndTime: dayjs().add(1, "day"),
+    date: "",
+    time: "",
+    coachType: "",
+    coachNo: "",
+    startingCounter: "",
+    endCounter: "",
+    registrationNumber: "",
+    coachClass: "",
+    fare: 0,
+    sold: 0,
+    booked: 0,
+    available: 40,
+    livingFrom: "",
+    goingTo: "",
+  },
   setBusSchedule: () => {},
-  schedules: [{}],
+  schedules: [
+    {
+      dateAndTime: dayjs().add(1, "day"),
+      date: "",
+      time: "",
+      coachType: "",
+      coachNo: "",
+      startingCounter: "",
+      endCounter: "",
+      registrationNumber: "",
+      coachClass: "",
+      fare: 0,
+      sold: 0,
+      booked: 0,
+      available: 40,
+      livingFrom: "",
+      goingTo: "",
+    },
+  ],
   setSchedules: () => [{}],
   showSchedules: false,
   setShowSchedules: () => {},
@@ -35,6 +69,8 @@ export const BusScheduleProvider: React.FC<React.PropsWithChildren> = ({
     sold: 0,
     booked: 0,
     available: 40,
+    livingFrom: "",
+    goingTo: "",
   });
 
   const [schedules, setSchedules] = useState<CreateBusType[]>([]);

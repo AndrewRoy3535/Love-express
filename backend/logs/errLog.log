@@ -1,0 +1,12 @@
+20230303	01:49:11	3a9f779f-0534-4d26-8093-5a4425a471ae	Error: Not allowed by CORS	OPTIONS	/	https://www.google.com
+20230303	01:49:11	0f2f949d-322b-48d3-bd57-ebbfc3b40bd9	Error: Not allowed by CORS	GET	/	https://www.google.com
+20230303	11:54:49	69a0d81e-3c0d-4331-8a8c-31adcc373f9d	Error: Not allowed by CORS	POST	/bus	undefined
+20230307	16:22:34	a25595ab-eb2a-4d25-8bb2-47a6eca896c2	TypeError: user.save is not a function	PATCH	/user	undefined
+20230307	16:23:19	5687421b-a07b-4018-9dd8-105b1fa29c34	TypeError: User.save is not a function	PATCH	/user	undefined
+20230307	16:24:55	dfb9ecbb-bfba-4767-a830-6ed6a721531f	TypeError: user.save is not a function	PATCH	/user	undefined
+20230307	16:28:32	06eca8cc-92a3-4f40-9506-8ed5a21bbcb1	TypeError: user.save is not a function	PATCH	/user	undefined
+20230307	22:56:19	ef41ab3d-04a7-4dc0-9400-e1cc1550bf6b	TypeError: user.save is not a function	PATCH	/user	undefined
+20230307	22:56:38	66121457-225a-420a-9b44-8e8766704238	TypeError: user.save is not a function	PATCH	/user	undefined
+20230307	22:58:15	d12ea33b-bef9-488b-8b6e-d4ecd4cfbffb	TypeError: user.save is not a function	PATCH	/user	undefined
+20230307	23:22:05	e9ad3cd5-953b-4717-857b-bdb3ea6b3389	CastError: Cast to ObjectId failed for value "64070651c78e0b03ca696595_" (type string) at path "_id" for model "User"	PATCH	/user	undefined
+20230307	23:23:16	1c419f9c-2f00-4f0f-a1e0-af2b198645ae	CastError: Cast to ObjectId failed for value "64070651c78e0b03ca6965951" (type string) at path "_id" for model "User"	PATCH	/user	undefined

@@ -29,9 +29,9 @@ Second, run the development server:
 1. Navigate to backend folder and run one of the follwing command:
 
 ```bash
-npm run dev
+npm start
 # or
-yarn run dev
+yarn start
 ```
 
 2. Navigate to admin folder and run one of the follwing command:
